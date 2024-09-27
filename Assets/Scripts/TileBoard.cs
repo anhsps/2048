@@ -106,7 +106,7 @@ public class TileBoard : MonoBehaviour
             {
                 TileCell cell = grid.GetCell(i, j);
                 if (cell.occupied)
-                    changed |= MoveTile(cell.tile, direction);// =changed || = MoveTile...
+                    changed |= MoveTile(direction, cell.tile);// =changed || = MoveTile...
             }
         }
 
@@ -114,7 +114,7 @@ public class TileBoard : MonoBehaviour
             StartCoroutine(WaitForChanges());
     }
 
-    private bool MoveTile(Tile tile, Vector2Int direction)
+    private bool MoveTile(Vector2Int direction, Tile tile)
     {
         TileCell newCell = null;
         TileCell adjacent = grid.GetAdjacentCell(direction, tile.cell);//tọa độ ô cell kề bên
@@ -153,7 +153,6 @@ public class TileBoard : MonoBehaviour
 
         int index = Mathf.Clamp(IndexOf(b.state) + 1, 0, tileStates.Length - 1);// nếu quá state cuối thì vẫn xài state cuối
         int number = b.number * 2;
-
         b.SetState(tileStates[index], number);
 
         gameManager.IncreaseScore(number);

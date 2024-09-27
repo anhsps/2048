@@ -106,7 +106,6 @@ public class GameManager : MonoBehaviour
 
     private void SaveHighScore()
     {
-        //int highScore = LoadHighScore();
         if (score > LoadHighScore())
             PlayerPrefs.SetInt("highScore", score);
     }
